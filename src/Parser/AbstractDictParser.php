@@ -13,6 +13,7 @@ abstract class AbstractDictParser
     public function __construct()
     {
         $path = $this->getDictionaryPath();
+        var_dump($path);
         if (! ($this->fileHandler = fopen($path, "r"))) {
             throw new \Exception("Zła ścieżka do słownika: {$path}");
         }
@@ -27,13 +28,13 @@ abstract class AbstractDictParser
         });
     }
 
-    public function getWordsFinishingWith(string $ending)
+    public function getWordsEndingWith(string $ending, ?int $maxLength = null) : array
     {
         $words = $this->getFlatWordsArray();
 
-        return array_filter($words, function ($word) use ($ending) {
+        return array_filter($this->getFlatWordsArray(), function ($word) use ($ending, $maxLength) {
             $length = mb_strlen($ending);
-            if (mb_strlen($word) <= $length || mb_strlen($word) > 8) {
+            if (mb_strlen($word) <= $length || ($maxLength && mb_strlen($word) > $maxLength)) {
                 return false;
             }
             return mb_substr($word, -$length) === $ending;
@@ -55,9 +56,9 @@ abstract class AbstractDictParser
 
     }
 
-    abstract public function getFlatWordsArray();
+    abstract public function getFlatWordsArray() : array ;
 
-    abstract public function makeGroupedWordsArray();
+    abstract public function getGroupedWordsArray() : array ;
 
     abstract public function getDictionaryPath() : string;
 }

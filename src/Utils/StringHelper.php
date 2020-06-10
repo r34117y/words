@@ -7,22 +7,20 @@ class StringHelper
     const VOWELS = ['a', 'ą', 'e', 'ę', 'y', 'i', 'o', 'ó', 'u'];
     const CONSONANTS = ['b', 'c', 'ć', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'ł', 'm', 'n', 'ń', 'p', 'q', 'r', 's', 'ś', 't', 'v', 'w', 'x', 'z', 'ź', 'ż'];
 
-    public static function startsWith($string, $line)
+
+    public static function startsWith(string $haystack, string $needle) : bool
     {
-        return $string === "" || strrpos($line, $string, -mb_strlen($line)) !== false;
+        return $haystack === "" || strrpos($haystack, $needle, -mb_strlen($needle)) !== false;
     }
 
-    public static function endsWith($haystack, $needle)
+    public static function endsWith(string $haystack, string $needle) : bool
     {
         $length = mb_strlen($needle);
-        if ($length == 0) {
-            return true;
-        }
 
-        return (mb_substr($haystack, -$length) === $needle);
+        return $length === 0 ||(mb_substr($haystack, -$length) === $needle);
     }
 
-    public static function stringToArray(string $string, $trim = true) : array
+    public static function stringToArray(string $string, bool $trim = true) : array
     {
         if ($trim) {
             $string = trim($string);

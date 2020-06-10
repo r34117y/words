@@ -7,12 +7,12 @@ use App\Utils\StringHelper;
 class OspsParser extends AbstractDictParser
 {
 
-    public function getFlatWordsArray()
+    public function getFlatWordsArray() : array
     {
         return $this->makeFlatArray('word');
     }
 
-    public function makeFlatBaseWordsArray()
+    public function getFlatBaseWordsArray() : array
     {
         return array_unique($this->makeFlatArray('baseWord'));
     }
@@ -27,7 +27,7 @@ class OspsParser extends AbstractDictParser
         return $words;
     }
 
-    public function makeGroupedWordsArray()
+    public function getGroupedWordsArray() : array
     {
         $groups = [];
         rewind($this->fileHandler);
@@ -44,8 +44,8 @@ class OspsParser extends AbstractDictParser
 
     public function createAnkiDeck()
     {
-        $wordsSki = $this->getWordsFinishingWith('izm');
-        $wordsCki = $this->getWordsFinishingWith('yzm');
+        $wordsSki = $this->getWordsEndingWith('izm');
+        $wordsCki = $this->getWordsEndingWith('yzm');
         $words = array_merge($wordsCki, $wordsSki);
         echo "All ski: " . count($words);
         $grouped = [];
@@ -69,7 +69,7 @@ class OspsParser extends AbstractDictParser
 
     public function getDictionaryPath() : string
     {
-        return 'data/osps40.txt';
+        return 'data/wordlists/osps42.txt';
     }
 
     /**

@@ -6,24 +6,22 @@ namespace App\Permutations;
 
 class Permutations
 {
-    private static function permutate($values, $size, $offset)
+    public static function make(array $items, array $perms = []) : array
     {
-        $count = count($values);
-        $array = [];
-        for ($i = 0; $i < $size; $i++) {
-            $selector = ($offset / pow($count,$i)) % $count;
-            $array[$i] = $values[$selector];
+        if (! $items) {
+            $return = array($perms);
+        }  else {
+            $return = array();
+            for ($i = count($items) - 1; $i >= 0; --$i) {
+                $newitems = $items;
+                $newperms = $perms;
+                list($foo) = array_splice($newitems, $i, 1);
+                array_unshift($newperms, $foo);
+                $return = array_merge($return, self::make($newitems, $newperms));
+            }
         }
-        return $array;
+
+        return $return;
     }
 
-    public static function permutations($values, $size) : array
-    {
-        $a = [];
-        $c = count($values) ** $size;
-        for ($i = 0; $i < $c; $i++) {
-            $a[$i] = self::permutate($values, $size, $i);
-        }
-        return $a;
-    }
 }
