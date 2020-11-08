@@ -7,7 +7,7 @@ namespace App\Parser;
 class SjpParser extends AbstractDictParser
 {
 
-    public function getFlatWordsArray()
+    public function getFlatWordsArray() : array
     {
         $words = [];
         rewind($this->fileHandler);
@@ -20,7 +20,7 @@ class SjpParser extends AbstractDictParser
         return $words;
     }
 
-    public function makeGroupedWordsArray()
+    public function getGroupedWordsArray() : array
     {
         $groups = [];
         rewind($this->fileHandler);
@@ -39,6 +39,6 @@ class SjpParser extends AbstractDictParser
 
     public function getDictionaryPath(): string
     {
-        return 'data/odm.txt';
+        return 'data/2020_09_12_odm.txt';
     }
 }

@@ -56,9 +56,9 @@ abstract class AbstractDictParser
 
     }
 
-    abstract public function getFlatWordsArray() : array ;
+    abstract public function getFlatWordsArray() : array;
 
-    abstract public function getGroupedWordsArray() : array ;
+    abstract public function getGroupedWordsArray() : array;
 
     abstract public function getDictionaryPath() : string;
 }

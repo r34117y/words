@@ -1,42 +1,32 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7d62778bde10fb593dae0003013ba59f",
+    "content-hash": "42eb504a43da48c87269a6e1c22cef8d",
     "packages": [
         {
             "name": "drupol/phpermutations",
-            "version": "1.3.3",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupol/phpermutations.git",
-                "reference": "4dc6c2c3054b68fa9410147c59fab75f00840ba8"
+                "reference": "869912ebee25a761f09518299004eefd1c73f280"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupol/phpermutations/zipball/4dc6c2c3054b68fa9410147c59fab75f00840ba8",
-                "reference": "4dc6c2c3054b68fa9410147c59fab75f00840ba8",
+                "url": "https://api.github.com/repos/drupol/phpermutations/zipball/869912ebee25a761f09518299004eefd1c73f280",
+                "reference": "869912ebee25a761f09518299004eefd1c73f280",
                 "shasum": ""
             },
             "require": {
-                "php": ">= 5.6"
+                "php": ">= 7.1.3"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "^2.10",
-                "jakub-onderka/php-parallel-lint": "^0.9.2",
-                "mockery/mockery": "^0.9",
-                "nikic/php-parser": "~2.1",
-                "phpmd/phpmd": "^2.6",
-                "phpro/grumphp": "^0.13",
-                "phpunit/php-code-coverage": "^4.0",
-                "phpunit/phpunit": "^5.7",
-                "satooshi/php-coveralls": "^1.0",
-                "scrutinizer/ocular": "^1.3",
-                "sebastian/phpcpd": "^3.0",
-                "sensiolabs/security-checker": "^4.1",
-                "squizlabs/php_codesniffer": "^2.0"
+                "drupol/php-conventions": "^1.7.1",
+                "phpunit/php-code-coverage": "^4 || ^5",
+                "phpunit/phpunit": "^6 || ^7"
             },
             "type": "library",
             "autoload": {
@@ -47,7 +37,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-3.0-only"
+                "MIT"
             ],
             "authors": [
                 {
@@ -55,7 +45,7 @@
                     "email": "pol.dellaiera@protonmail.com"
                 }
             ],
-            "description": "Generate iterators for array permutations in an efficient way.",
+            "description": "Generators and iterators, permutations and combinations.",
             "homepage": "https://github.com/drupol/phpermutations",
             "keywords": [
                 "combinations",
@@ -67,15 +57,105 @@
                 "prime numbers",
                 "product"
             ],
-            "time": "2018-05-29T07:47:32+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/drupol",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-05-11T07:42:22+00:00"
+        },
+        {
+            "name": "markbaker/tries",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/r34117y/Tries.git",
+                "reference": "9edeaa52502c6a9189afcb7bfdcae644343a907b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/r34117y/Tries/zipball/9edeaa52502c6a9189afcb7bfdcae644343a907b",
+                "reference": "9edeaa52502c6a9189afcb7bfdcae644343a907b",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2|^8.0"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "dev-master",
+                "phpcompatibility/php-compatibility": "dev-master",
+                "phploc/phploc": "^5.0@dev",
+                "phpmd/phpmd": "dev-master",
+                "phpunit/phpunit": "^8.4@dev",
+                "sebastian/phpcpd": "^4.1",
+                "squizlabs/php_codesniffer": "^3.0@dev"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tries\\": "classes/src/"
+                }
+            },
+            "scripts": {
+                "style": [
+                    "phpcs --report-width=200 --report-summary  --report-full classes/src/ --standard=PSR2 -n"
+                ],
+                "test": [
+                    "phpunit -c phpunit.xml.dist"
+                ],
+                "mess": [
+                    "phpmd classes/src/ xml codesize,unusedcode,design,naming -n"
+                ],
+                "lines": [
+                    "phploc classes/src/ -n"
+                ],
+                "cpd": [
+                    "phpcpd classes/src/ -n"
+                ],
+                "versions": [
+                    "phpcs --report-width=200 --report-summary  --report-full classes/src/ --standard=PHPCompatibility --runtime-set testVersion 7.0- -n"
+                ],
+                "coverage": [
+                    "phpunit -c phpunit.xml.dist --coverage-text --coverage-html ./build/coverage"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Baker",
+                    "email": "mark@lange.demon.co.uk"
+                }
+            ],
+            "description": "PHP Classes for Trie datastructures",
+            "homepage": "https://github.com/MarkBaker/Tries",
+            "keywords": [
+                "datastructure",
+                "patricia",
+                "radix",
+                "suffix",
+                "trie"
+            ],
+            "support": {
+                "source": "https://github.com/r34117y/Tries/tree/master"
+            },
+            "time": "2020-10-11T11:20:40+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "markbaker/tries": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": []
+    "platform": {
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    },
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }

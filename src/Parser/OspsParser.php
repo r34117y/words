@@ -69,7 +69,7 @@ class OspsParser extends AbstractDictParser
 
     public function getDictionaryPath() : string
     {
-        return 'data/wordlists/osps42.txt';
+        return 'data/osps42.utf8.txt';
     }
 
     /**
