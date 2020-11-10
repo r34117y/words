@@ -17,7 +17,7 @@ Możliwe, że trzeba też zmienić znaki końca linii (`dos2unix data/wordlists/
 ## DictParsers
 
 Klasy do parsowania leksykonów dziedziczą po abstrakcyjnej klasie `AbstractDictParser`.
-Ścieżki do plików należy zdefiniować w pliku `src/config.php`
+Ścieżkę do pliku należy przekazać do konstruktora
 
 ### Metody:
 

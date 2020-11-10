@@ -36,9 +36,4 @@ class SjpParser extends AbstractDictParser
         }
         return $groups;
     }
-
-    public function getDictionaryPath(): string
-    {
-        return 'data/2020_09_12_odm.txt';
-    }
 }

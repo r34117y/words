@@ -67,11 +67,6 @@ class OspsParser extends AbstractDictParser
 
     }
 
-    public function getDictionaryPath() : string
-    {
-        return 'data/osps42.utf8.txt';
-    }
-
     /**
      * 1. Makes all characters lowercase (no uppercase characters in osps)
      * 2. Gets rid of '(ndm)' in undeclinable words

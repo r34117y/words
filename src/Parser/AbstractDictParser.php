@@ -10,10 +10,8 @@ abstract class AbstractDictParser
     /** @var bool|resource */
     protected $fileHandler;
 
-    public function __construct()
+    public function __construct(string $path)
     {
-        $path = $this->getDictionaryPath();
-        var_dump($path);
         if (! ($this->fileHandler = fopen($path, "r"))) {
             throw new \Exception("Zła ścieżka do słownika: {$path}");
         }
@@ -59,6 +57,4 @@ abstract class AbstractDictParser
     abstract public function getFlatWordsArray() : array;
 
     abstract public function getGroupedWordsArray() : array;
-
-    abstract public function getDictionaryPath() : string;
 }
