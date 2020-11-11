@@ -29,10 +29,10 @@ class SjpParser extends AbstractDictParser
             $parent = trim(array_shift($lineParsed));
             if (array_key_exists($parent, $groups)) {
                 echo "Słowo powtarza się: {$parent}\n";
+                $groups[$parent] = array_map('trim', $lineParsed);
             } else {
-                $groups[$parent] = [];
+                $groups[$parent] = array_unique(array_merge($groups[$parent], array_map('trim', $lineParsed)));
             }
-            $groups[$parent][] = array_map('trim', $lineParsed);
         }
         return $groups;
     }
